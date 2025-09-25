@@ -104,3 +104,51 @@ input, select, textarea { width: 100%; padding: 10px 12px; border-radius: 10px; 
   .hero-inner, .grid-2, .two-col, .contact-grid, .pricing-grid, .cards { grid-template-columns: 1fr; }
   .bullets.two-col { columns: 1; }
 }
+/* Responsive hero image */
+.hero-art img {
+  display: block;
+  width: 100%;
+  /* Scales between 140px and 220px tall based on viewport width */
+  height: clamp(140px, 32vw, 220px);
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: #0e152b;
+}
+
+/* Tighten hero spacing and font sizes on narrow screens */
+@media (max-width: 600px) {
+  .hero { padding: 40px 0 16px; }
+  .hero h1 { font-size: 32px; }
+  .subhead { font-size: 16px; }
+  /* Make the image a bit shorter on very small phones */
+  .hero-art img { height: clamp(120px, 28vw, 180px); border-radius: 12px; }
+}
+/* Responsive hero image */
+.hero-art img {
+  display: block;
+  width: 100%;
+  height: clamp(140px, 32vw, 220px); /* short on phones, max ~220px on wide screens */
+  object-fit: cover;                 /* fill the box without distortion */
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: #0e152b;
+}
+
+@media (max-width: 600px) {
+  .hero-art img { height: clamp(120px, 28vw, 180px); }
+}
+/* STOP CROPPING: show the whole image */
+.hero-art img {
+  display: block;
+  width: 100%;
+  height: auto;              /* key: no fixed height */
+  object-fit: contain;       /* keep whole image inside the box */
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: #0e152b;       /* fills letterbox space if any */
+}
+
+/* If you previously set a clamp height, neutralize it */
+.hero-art img { height: auto !important; }
+
